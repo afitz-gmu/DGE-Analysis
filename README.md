@@ -157,5 +157,5 @@ DGE.list <- DGE(count.table = xx , design.matrix = ds )
 
 VennDig(DGE.list)
 
-![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/image/golub.jpeg) 
+![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/golub.jpeg) 
 
