@@ -1,0 +1,31 @@
+Package: GenomicVisualization
+Title: Bioinformatics plots for various Visualization 
+Version: 1.0
+Authors: Alex Fitz
+BugReports: https://github.com/afitz-gmu/DGE-Analysis/issues
+Description: Bioinformatics plots for various Visulization.
+Imports:
+	ggplot2,
+	eulerr,
+	UpSetR,
+	ggvenn,
+	ggrepel,
+	gridExtra,
+	reshape2,
+	graphics,
+	limma,
+	edgeR,
+	DESeq2,
+	SummarizedExperiment,
+	grDevices,
+	knitr,
+	stats
+Suggests:
+	covr,
+    rmarkdown,
+    testthat
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
