@@ -58,16 +58,12 @@ DGE.CI <- function(DE  , FoldChange = 0 , cutoff=0.05 , type.sig='p') {
   fc <- reshape2::acast(data=df ,genes ~Method, value.var="FoldChange")
   colnames(fc) <-paste(colnames(fc),"FoldChange")
   
-  Range= t(apply(fc,1,range))
-  colnames(Range)<-c("Min","Max")
-  fc<-cbind(fc, Range)
-  pv <- reshape2::acast(data=df ,genes ~Method, value.var="pvalue")
-  colnames(pv) <-paste(colnames(pv),"pvalue")
-  Range= t(apply(pv,1,range))
-  colnames(Range)<-c("Min","Max")
-  pv<-cbind(pv, Range)
-  res<-cbind(fc,pv)
-  res <- as.data.frame(res)
-  return(res)
-
+  ggplot2::ggplot(df , ggplot2::aes(x= as.numeric(as.factor(genes)) , y= -log10(pvalue) )) +
+  ggplot2::geom_point(ggplot2::aes(pch = Regulation  , color=Method , size=FoldChange) ) +
+  ggplot2::geom_smooth( method=loess , se=TRUE, color="red")  +
+  ggplot2::scale_x_discrete(labels=gn , name="genes") +
+  ggplot2::theme_minimal() +
+  ggplot2::ggtitle("95 confidence interval") +
+  ggplot2::geom_hline(yintercept=-log10(cutoff), col="cyan")
+  
 }
