@@ -5,7 +5,7 @@
 - [Install](#Install)
 - [DGE](#DGE)
 - [plots](#plots)
-- [Golub Test Dataset](#Golub Test Dataset)
+- [Golub](#Golub)
 
 # Install
 
@@ -153,7 +153,7 @@ DGE.CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
 |Gene9230|0.282854723987658|0.282620482988113|0.310124743179966|0.282620482988113|0.310124743179966|0.000351248577561045|8.10948071015179e-07|3.29044695217997e-10|3.29044695217997e-10|0.000351248577561045|
 
 
-# Golub Test Dataset
+# Golub
 
 ```
 # Install the required packages
