@@ -34,6 +34,8 @@ VennDig(DGE.list)
 
 # Plots
 
+Prepare the data. 
+
 ```
 data("DEG")
 DE.list<-list("edger" =dge_edger, "edgerql" = dge_edgerql, "deseq2" = dge_deseq2, "voom" = dge_voom )
