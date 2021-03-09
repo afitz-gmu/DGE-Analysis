@@ -19,54 +19,57 @@ library(GenomicVisualization)
 
 # DGE
 
-Basic function to perfrom DEG by EdgeR , DESeq2 and voom for given count matrix data and design matrix. 
+Basic function to perfrom Differential Gene Expression by EdgeR, DESeq2 and Voom.
 
+```
 data("count.table")
-
 design <- data.frame("trt" = colnames(count.table))
-
 rownames(design) <- design$trt
-
 design$trt <- as.integer(grepl("T",design[,1]))
-
 DGE.list <- DGE(count.table = count.table , design.matrix = design , method=c("EdgeR","voom") )
-
 VennDig(DGE.list)
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/VennDEG.jpeg) 
 
+# Plots
 
-# plots
-
-
+```
 data("DEG")
-
 DE.list<-list("edger" =dge_edger, "edgerql" = dge_edgerql, "deseq2" = dge_deseq2, "voom" = dge_voom )
+```
 
 ### Volcano plots
 
-
+```
 multiVolcano(DE.list, FoldChange = 1.4, DE.Only = FALSE , show.genes = TRUE )
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/MultiVolcano1.jpeg) 
 
 For user defined gene list
 
+```
 genes.list<-c("Gene7673", "Gene28034", "Gene38639")
-
 multiVolcano(DE.list, FoldChange = 1.4, DE.Only = FALSE , genes = genes.list , show.genes = TRUE)
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/multiVolcano2.jpeg) 
 
-For showing Differentially expressed genes removing you changed genes ( run this when only few genes are regulated)
+For showing Differentially expressed genes. This command will show only a few of the outlier genes)
 
+```
 multiVolcano(DE.list, show.genes = FALSE)
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/Volcano3.jpeg) 
 
-For showing Differentially expressed genes ( marking show.genes as false for more asthetic plot)
 
+For showing Differentially expressed genes (marking show.genes as false for more asthetic plot)
+
+```
 multiVolcano(DE.list, FoldChange = 1.4 , show.genes = FALSE)
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/Volcano4.jpeg) 
 
