@@ -157,10 +157,12 @@ DGE.CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
 
 ```
 # Install the required packages
+
 BiocManager::install("multtest")
 library(multtest)
 
 # load the golub dataset
+
 data(golub)
 ds<-data.frame("trt" = golub.cl)
 colnames(golub) <-paste0("Name",1:length(golub.cl))
