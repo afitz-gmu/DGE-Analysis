@@ -5,7 +5,7 @@
 - [Install](#Install)
 - [DGE](#DGE)
 - [plots](#plots)
-- [golub](#golub)
+- [golub](#Golub Test Dataset)
 
 # Install
 
