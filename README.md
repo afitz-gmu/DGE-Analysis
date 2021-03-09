@@ -135,26 +135,18 @@ DGE,CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
 |Gene9230|0.282854723987658|0.282620482988113|0.310124743179966|0.282620482988113|0.310124743179966|0.000351248577561045|8.10948071015179e-07|3.29044695217997e-10|3.29044695217997e-10|0.000351248577561045|
 
 
-# golub 
+# Golub Test Dataset
 
 BiocManager::install("multtest")
-
 library(multtest)
 
 data(golub)
-
 ds<-data.frame("trt" = golub.cl)
-
 colnames(golub) <-paste0("Name",1:length(golub.cl))
-
 row.names(ds) <- colnames(golub)
-
 ds$trt <- paste0("C",ds$trt)
-
 xx<-as.data.frame(round(exp(golub)*1000))
-
 DGE.list <- DGE(count.table = xx , design.matrix = ds )
-
 VennDig(DGE.list)
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/golub.jpeg) 
