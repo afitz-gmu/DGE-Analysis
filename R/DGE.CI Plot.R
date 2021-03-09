@@ -18,7 +18,7 @@
 #'
 #' @export
 #'
-DGE.CI <- function(DE  , FoldChange = 0 , cutoff=0.05 , type.sig='p') {
+DGE.CI.Plot <- function(DE  , FoldChange = 0 , cutoff=0.05 , type.sig='p') {
 
   stopifnot(is.numeric(FoldChange) , is.numeric(cutoff))
 
