@@ -8,11 +8,14 @@
 - [golub](#golub)
 
 # Install
+
+Install the required packages and link to the correct github repository.
+
+```
 library(remotes) 
-
 remotes::install_github(repo="afitz-gmu/DGE-Analysis", build_opts = c("--no-resave-data", "--no-manual"))
-
 library(GenomicVisualization)
+```
 
 # DGE
 
@@ -72,7 +75,9 @@ multiVolcano(DE.list, FoldChange = 1.4 , show.genes = FALSE)
 
 ### Bar plot
 
+```
 TabulateStats(DE=DE.list , FoldChange=0 , cutoff =0.01 )
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/Bar.jpeg) 
 
@@ -87,25 +92,33 @@ TabulateStats(DE=DE.list , FoldChange=0 , cutoff =0.01 )
 
 ### Venn Diagram
 
+```
 VennDig(DE=DE.list , FoldChange=1.5 , cutoff =0.01 , type.sig ="FDR")
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/venn.jpeg) 
 ### Upset plot
 
+```
 UpSetPlot(DE=DE.list , FoldChange=0 , cutoff =0.01 , type.sig = "p")
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/Upsetplot.jpeg) 
 
 
 ### Prapotional Venn Diagram
 
+```
 EulerrPlot(DE=DE.list , FoldChange=0 , cutoff =0.05 , type.sig ="p")
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/eular.jpeg) 
 
 ### CI interval plot and data frame
 
-DGE,CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
+```
+DGE.CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
+```
 
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/CI.jpeg) 
 
@@ -138,9 +151,11 @@ DGE,CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
 # Golub Test Dataset
 
 ```
+# Install the required packages
 BiocManager::install("multtest")
 library(multtest)
 
+# load the golub dataset
 data(golub)
 ds<-data.frame("trt" = golub.cl)
 colnames(golub) <-paste0("Name",1:length(golub.cl))
@@ -150,6 +165,8 @@ xx<-as.data.frame(round(exp(golub)*1000))
 DGE.list <- DGE(count.table = xx , design.matrix = ds )
 VennDig(DGE.list)
 ```
-
 ![](https://raw.githubusercontent.com/afitz-gmu/DGE-Analysis/main/image/golub.jpeg) 
 
+```
+DGE.CI(DE=DE.list , FoldChange=1.2 , cutoff =0.05 , type.sig ="p")
+```
