@@ -2,7 +2,6 @@
 
 export(DGE)
 export(DGE.CI)
-export(DGE.CI.Plot)
 export(EulerrPlot)
 export(MethodDESeq2)
 export(MethodEdgeR)
