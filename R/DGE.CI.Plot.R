@@ -16,7 +16,7 @@
 #' DGE.CI(DE=DE.list , FoldChange=1.2 , cutoff =0.01 , type.sig ="FDR")
 #'
 #'
-#' @export
+#' @export(DGE.CI.Plot)
 #'
 DGE.CI.Plot <- function(DE  , FoldChange = 0 , cutoff=0.05 , type.sig='p') {
 
