@@ -13,10 +13,10 @@
 #' data("DEG")
 #' DE.list<-list("edger" =dge_edger, "edgerql" = dge_edgerql,
 #' "voom" = dge_voom )
-#' DGE.CI(DE=DE.list , FoldChange=1.2 , cutoff =0.01 , type.sig ="FDR")
+#' DGE.CI.Plot(DE=DE.list , FoldChange=1.2 , cutoff =0.01 , type.sig ="FDR")
 #'
 #'
-#' @export(DGE.CI.Plot)
+#' @export
 #'
 DGE.CI.Plot <- function(DE  , FoldChange = 0 , cutoff=0.05 , type.sig='p') {
 
