@@ -9,6 +9,7 @@
 #' @importFrom grid grid.text
 #' @importFrom grid grid.edit
 #' @importFrom grid grid.grab
+#' @importFrom grid gpar
 #' @importFrom gridExtra grid.arrange
 #' @return \code{NULL}
 #'
@@ -54,7 +55,7 @@ UpSetPlot <- function(DE  , FoldChange = 0 , cutoff=0.05, type.sig=NULL )
   for(v in names(plot.ls))
     {
     print(plot.ls[[v]])
-    grid::grid.text(v ,x=0.65, y=0.97 ,gp =gpar(fontsize=8))
+    grid::grid.text(v ,x=0.65, y=0.97 ,gp =grid::gpar(fontsize=8))
     grid::grid.edit('arrange', name=v)
     vp<-grid::grid.grab()
     plot.ls[[v]] <-vp
