@@ -1,4 +1,4 @@
-# GenomicsVisualization
+# DGE-Analysis
 
 ## Index
 
