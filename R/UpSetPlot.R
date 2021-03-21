@@ -4,10 +4,15 @@
 #' @param FoldChange is cuoff to mark genes as Differentially expressed
 #' @param cutoff is either pvalue of FDR cutoff for filtering
 #' @param type.sig vector \code{c('p', 'FDR')} default \code{'p'}
+#' @param regulation 
 #' @importFrom UpSetR upset
 #' @importFrom UpSetR fromList
-#' @return \code{NULL}-
-#'
+#' @importFrom grid grid.text
+#' @importFrom grid grid.edit
+#' @importFrom grid grid.grab
+#' @importFrom grid gpar
+#' @importFrom gridExtra grid.arrange
+#' @return \code{NULL}
 #' @examples
 #'
 #' data("DEG")
@@ -18,7 +23,7 @@
 #'
 #' @export
 
-UpSetPlot <- function(DE  , FoldChange = 0 , cutoff=0.05, type.sig=NULL )
+UpSetPlot <- function(DE  , FoldChange = 0 , cutoff=0.05, type.sig=NULL)
 {
   type.sig <-type.sig
   FC <- c("log2FoldChange", "logFC")
@@ -42,7 +47,20 @@ UpSetPlot <- function(DE  , FoldChange = 0 , cutoff=0.05, type.sig=NULL )
     down[[name]]<-row.names(DERes[DERes$regulation == "DOWN",])
 
   }
-  UpSetR::upset(UpSetR::fromList(up), order.by = "freq")
-  UpSetR::upset(UpSetR::fromList(down), order.by = "freq")
+
+  plot.ls <- list(
+    UpRegulated = UpSetR::upset(UpSetR::fromList(up), order.by = "freq"),
+    DownRegulated = UpSetR::upset(UpSetR::fromList(down), order.by = "freq"))
+
+  for(v in names(plot.ls))
+  {
+    print(plot.ls[[v]])
+    grid::grid.text(v ,x=0.65, y=0.97 ,gp =grid::gpar(fontsize=8))
+    grid::grid.edit('arrange', name=v)
+    vp<-grid::grid.grab()
+    plot.ls[[v]] <-vp
+  }
+  
+  gridExtra::grid.arrange(grobs=plot.ls , ncol=2)
 
 }
